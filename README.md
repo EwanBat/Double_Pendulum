@@ -1,7 +1,3 @@
-<script type="text/javascript" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
-
 # Double Pendulum Simulation with 3D Stereographic Projection
 
 ## Author
@@ -19,22 +15,22 @@ This project simulates the motion of a **double pendulum** using **stereographic
 
 We project the unit sphere (radius = 1, centered at \( O = (0,0,0) \)) onto the plane \( P: z = -1 \) from the north pole \( N = (0,0,1) \).
 
-Any point \( M = (\xi, \eta, \zeta) \) on the sphere satisfies:
-\[
+Any point $$\( M = (\xi, \eta, \zeta) \)$$ on the sphere satisfies:
+$$\[
 \xi^2 + \eta^2 + \zeta^2 = 1 \tag{1.1}
-\]
+\]$$
 
-The stereographic projection from \( N \) onto the plane gives coordinates:
-\[
+The stereographic projection from $$\( N \)$$ onto the plane gives coordinates:
+$$\[
 x = \frac{2\xi}{1 - \zeta}, \quad y = \frac{2\eta}{1 - \zeta} \tag{1.2}
-\]
+\]$$
 
 The inverse transformation is:
-\[
+$$\[
 (\xi, \eta, \zeta) = \left( \frac{2x}{1 + x^2 + y^2}, \frac{2y}{1 + x^2 + y^2}, \frac{-1 + x^2 + y^2}{1 + x^2 + y^2} \right) \tag{1.3}
-\]
+\]$$
 
-> ⚠️ The projection diverges at \( \zeta = 1 \), so points near the north pole must be avoided in simulations.
+> ⚠️ The projection diverges at $$\( \zeta = 1 \)$$, so points near the north pole must be avoided in simulations.
 
 ---
 
@@ -42,12 +38,12 @@ The inverse transformation is:
 
 Using spherical coordinates, the motion of a pendulum of mass \( m \) and length \( l \) is governed by:
 
-\[
+$$\[
 \begin{cases}
 l \cdot \ddot{\theta} - l \cdot \dot{\varphi}^2 = -g \cdot \sin(\theta) \\
 l \cdot \ddot{\varphi} + 2l \cdot \dot{\theta} \cdot \dot{\varphi} \cdot \cos(\theta) = 0
 \end{cases}
-\]
+\]$$
 
 This system can be solved numerically to obtain the 3D trajectory of the pendulum.
 
@@ -59,14 +55,14 @@ We consider two pendulums with respective lengths \( l_1, l_2 \) and masses \( m
 
 Stereographic coordinates and momenta:
 
-- For pendulum 2: \( q_1, q_2 \), \( p_1, p_2 \)
-- For pendulum 1: \( q_3, q_4 \), \( p_3, p_4 \)
+- For pendulum 2: $$\( q_1, q_2 \), \( p_1, p_2 \)$$
+- For pendulum 1: $$\( q_3, q_4 \), \( p_3, p_4 \)$$
 
 #### Hamiltonian Function
 
-\[
+$$\[
 H = \frac{(A - B + C - D)^2 \cdot \frac{m_1}{m_2} + (A - B)^2 + \frac{m_2}{m_1} (y_1^2 + y_2^2) + (y_1 - y_3)^2 + (y_2 - y_4)^2 + 2F(q_1 y_3 + q_2 y_4) + 2G(q_3 y_1 + q_4 y_2) - 2FG(1 + q_1 q_3 + q_2 q_4)}{2 l_1^2 l_2^2 (m_2 a^2 b^2 + 4m_1 k(a b - k))} + g((m_1 + m_2)(1 - \frac{2}{b})l_2 + m_1(1 - \frac{2}{a})l_1) \tag{2.1}
-\]
+\]$$
 
 - The first term represents **kinetic energy**
 - The added term is **potential energy**

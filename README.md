@@ -51,7 +51,7 @@ This system can be solved numerically to obtain the 3D trajectory of the pendulu
 
 ### 3. Double Pendulum with Hamiltonian Mechanics
 
-We consider two pendulums with respective lengths \( l_1, l_2 \) and masses \( m_1, m_2 \). The first pendulum is anchored at the origin, and the second is attached to the end of the first.
+We consider two pendulums with respective lengths $\( l_1, l_2 \)$ and masses $\( m_1, m_2 \)$. The first pendulum is anchored at the origin, and the second is attached to the end of the first.
 
 Stereographic coordinates and momenta:
 
@@ -60,7 +60,11 @@ Stereographic coordinates and momenta:
 
 #### Hamiltonian Function
 
-$$\[H = \frac{(A - B + C - D)^2 \cdot \frac{m_1}{m_2} + (A - B)^2 + \frac{m_2}{m_1} (y_1^2 + y_2^2) + (y_1 - y_3)^2 + (y_2 - y_4)^2 + 2F(q_1 y_3 + q_2 y_4) + 2G(q_3 y_1 + q_4 y_2) - 2FG(1 + q_1 q_3 + q_2 q_4)}{2 l_1^2 l_2^2 (m_2 a^2 b^2 + 4m_1 k(a b - k))} + g((m_1 + m_2)(1 - \frac{2}{b})l_2 + m_1(1 - \frac{2}{a})l_1) \tag{2.1} \]$$
+$$ H = \frac{h}{f} + l$$
+
+$h = (A - B + C - D)^2 \cdot \frac{m_1}{m_2} + (A - B)^2 + \frac{m_2}{m_1} (y_1^2 + y_2^2) + (y_1 - y_3)^2 + (y_2 - y_4)^2 + 2F(q_1 y_3 + q_2 y_4) + 2G(q_3 y_1 + q_4 y_2) - 2FG(1 + q_1 q_3 + q_2 q_4)$
+$f = 2 l_1^2 l_2^2 (m_2 a^2 b^2 + 4m_1 k(a b - k))$
+$l = g((m_1 + m_2)(1 - \frac{2}{b})l_2 + m_1(1 - \frac{2}{a})l_1) \tag{2.1}$
 
 - The first term represents **kinetic energy**
 - The added term is **potential energy**

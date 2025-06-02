@@ -1,0 +1,16 @@
+# Ignorer les images
+*.jpg
+*.jpeg
+*.png
+*.gif
+
+# Ignorer les vidéos
+*.mp4
+*.mov
+*.avi
+
+# Ignorer les fichiers texte ou données
+*.txt
+
+# Ignorer les outputs
+*.o

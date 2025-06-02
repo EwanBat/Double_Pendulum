@@ -3,6 +3,7 @@
 *.jpeg
 *.png
 *.gif
+*.pdf
 
 # Ignorer les vidéos
 *.mp4
@@ -14,3 +15,6 @@
 
 # Ignorer les outputs
 *.o
+
+# Ignorer les fichiers
+/.vscode

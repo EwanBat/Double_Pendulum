@@ -15,20 +15,14 @@ This project simulates the motion of a **double pendulum** using **stereographic
 
 We project the unit sphere (radius = 1, centered at \( O = (0,0,0) \)) onto the plane \( P: z = -1 \) from the north pole \( N = (0,0,1) \).
 
-Any point $$\( M = (\xi, \eta, \zeta) \)$$ on the sphere satisfies:
-$$
-\xi^2 + \eta^2 + \zeta^2 = 1 \tag{1.1}
-$$
+Any point $M = (\xi, \eta, \zeta)$ on the sphere satisfies:
+$ \xi^2 + \eta^2 + \zeta^2 = 1 \tag{1.1} $
 
-The stereographic projection from $$\( N \)$$ onto the plane gives coordinates:
-$$
-x = \frac{2\xi}{1 - \zeta}, \quad y = \frac{2\eta}{1 - \zeta} \tag{1.2}
-$$
+The stereographic projection from $N$ onto the plane gives coordinates:
+$ x = \frac{2\xi}{1 - \zeta}, \quad y = \frac{2\eta}{1 - \zeta} \tag{1.2} $
 
 The inverse transformation is:
-$$
-(\xi, \eta, \zeta) = \left( \frac{2x}{1 + x^2 + y^2}, \frac{2y}{1 + x^2 + y^2}, \frac{-1 + x^2 + y^2}{1 + x^2 + y^2} \right) \tag{1.3}
-$$
+$ (\xi, \eta, \zeta) = \left( \frac{2x}{1 + x^2 + y^2}, \frac{2y}{1 + x^2 + y^2}, \frac{-1 + x^2 + y^2}{1 + x^2 + y^2} \right) \tag{1.3} $
 
 > ⚠️ The projection diverges at $$\( \zeta = 1 \)$$, so points near the north pole must be avoided in simulations.
 

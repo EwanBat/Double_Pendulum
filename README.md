@@ -64,17 +64,16 @@ $l = g((m_1 + m_2)(1 - \frac{2}{b})l_2 + m_1(1 - \frac{2}{a})l_1) \tag{2.1}$
 
 #### Definitions (from Appendix)
 
-```text
-g = 9.81 m/s² (gravitational constant)
+$g = 9.81 m/s²$ (gravitational constant)
 
-a = 1 + q1² + q2²
-b = 1 + q3² + q4²
-k = (q1 - q3)² + (q2 - q4)²
+$a = 1 + q1² + q2²$
+$b = 1 + q3² + q4²$
+$k = (q1 - q3)² + (q2 - q4)²$
 
-A = p1 * l2 * a * (a(q4 - q2) + q2 * k)
-B = p2 * l2 * a * (a(q3 - q1) + q1 * k)
-C = p3 * l1 * b * (b(q2 - q4) + q4 * k)
-D = p4 * l1 * b * (b(q1 - q3) + q3 * k)
+$A = p1 * l2 * a * (a(q4 - q2) + q2 * k)$
+$B = p2 * l2 * a * (a(q3 - q1) + q1 * k)$
+$C = p3 * l1 * b * (b(q2 - q4) + q4 * k)$
+$D = p4 * l1 * b * (b(q1 - q3) + q3 * k)$
 
 y1 = p1 * l2 * b * (b² / 2)
 y2 = p2 * l2 * b * (b² / 2)

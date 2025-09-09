@@ -40,6 +40,8 @@ l \cdot \ddot{\varphi} + 2l \cdot \dot{\theta} \cdot \dot{\varphi} \cdot \cos(\t
 
 This system can be solved numerically to obtain the 3D trajectory of the pendulum.
 
+<img src="image/Trajectoire_1pend.png" alt="Simple pendulum" width="300"/>
+
 ---
 
 ### 3. Double Pendulum with Hamiltonian Mechanics
@@ -75,3 +77,5 @@ $A = p1 * l2 * a * (a(q4 - q2) + q2 * k)$; $B = p2 * l2 * a * (a(q3 - q1) + q1 *
 $y1 = p1 * l2 * b * (b² / 2)$; $y2 = p2 * l2 * b * (b² / 2)$; $y3 = p3 * l1 * a * (b² / 2)$; $y4 = p4 * l1 * a * (b² / 2)$
 
 $F = a * b * l2 * (q1 * p1 + q2 * p2)$; $G = a * b * l1 * (q3 * p3 + q4 * p4)$
+
+<img src="image/Trajectoire_2pend.png" alt="Double pendulum" width="300"/>

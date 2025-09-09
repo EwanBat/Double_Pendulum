@@ -44,6 +44,8 @@ axes.set_xlim(-Rho,Rho)
 axes.set_ylim(-Rho,Rho)
 axes.set_zlim(0,Rho)
 axes.plot(L_X,L_Y,L_Z,label = 'Position du pendule')
+plt.legend()
+plt.savefig("image/Trajectoire_1pend.png",dpi=300,bbox_inches='tight')
 plt.show()
 
 # For an animation of the simple pendulum, uncomment it
@@ -135,6 +137,7 @@ axes.plot(L_X2[:2000],L_Y2[:2000],L_Z2[:2000],label = '2nd trajectory',color='cy
 axes.plot(L_X1[0],L_Y1[0],L_Z1[0],label = '1st end',color='orange',marker = 'o')
 axes.plot(L_X2[0],L_Y2[0],L_Z2[0],label = '2nd end',color='blue',marker = 'o')
 plt.legend()
+plt.savefig("image/Trajectoire_2pend.png",dpi=300,bbox_inches='tight')
 plt.show() 
 
 # Trajectory with a tail, uncomment for the animation

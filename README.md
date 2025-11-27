@@ -38,6 +38,8 @@ l \cdot \ddot{\varphi} + 2l \cdot \dot{\theta} \cdot \dot{\varphi} \cdot \cos(\t
 
 This system can be solved numerically to obtain the 3D trajectory of the pendulum.
 
+<img src="image/trajectory_1pend.png" alt="Simple pendulum" width="300"/>
+
 ---
 
 ### 3. Double Pendulum with Hamiltonian Mechanics
@@ -62,24 +64,26 @@ $l = g((m_1 + m_2)(1 - \frac{2}{b})l_2 + m_1(1 - \frac{2}{a})l_1) \tag{2.1}$
 - The first term represents **kinetic energy**
 - The added term is **potential energy**
 
+<img src="image/error_double_pendulum.png" alt="Simple pendulum" width="300"/>
+
 #### Definitions (from Appendix)
 
-```text
-g = 9.81 m/s² (gravitational constant)
 
-a = 1 + q1² + q2²
-b = 1 + q3² + q4²
-k = (q1 - q3)² + (q2 - q4)²
+$g = 9.81 m/s²$ (gravitational constant)
 
-A = p1 * l2 * a * (a(q4 - q2) + q2 * k)
-B = p2 * l2 * a * (a(q3 - q1) + q1 * k)
-C = p3 * l1 * b * (b(q2 - q4) + q4 * k)
-D = p4 * l1 * b * (b(q1 - q3) + q3 * k)
+$a = 1 + q1² + q2²$
+$b = 1 + q3² + q4²$
+$k = (q1 - q3)² + (q2 - q4)²$
 
-y1 = p1 * l2 * b * (b² / 2)
-y2 = p2 * l2 * b * (b² / 2)
-y3 = p3 * l1 * a * (b² / 2)
-y4 = p4 * l1 * a * (b² / 2)
+$A = p1 * l2 * a * (a(q4 - q2) + q2 * k)$
+$B = p2 * l2 * a * (a(q3 - q1) + q1 * k)$
+$C = p3 * l1 * b * (b(q2 - q4) + q4 * k)$
+$D = p4 * l1 * b * (b(q1 - q3) + q3 * k)$
 
-F = a * b * l2 * (q1 * p1 + q2 * p2)
-G = a * b * l1 * (q3 * p3 + q4 * p4)
+$y1 = p1 * l2 * b * (b² / 2)$
+$y2 = p2 * l2 * b * (b² / 2)$
+$y3 = p3 * l1 * a * (b² / 2)$
+$y4 = p4 * l1 * a * (b² / 2)$
+
+$F = a * b * l2 * (q1 * p1 + q2 * p2)$
+$G = a * b * l1 * (q3 * p3 + q4 * p4)$

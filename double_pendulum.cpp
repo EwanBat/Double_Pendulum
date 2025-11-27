@@ -412,7 +412,7 @@ void double_pendule_3D(double* Coord,double* dCoord,double t){
   
 int main(){
     double* Coord;
-    double q1 = 0.7,q2 = 0,q3 = 0.9,q4 = 0.89;
+    double q1 = 0.7,q2 = 0,q3 = 1,q4 = 0.89;
     double p1 = 0,p2 = 0,p3 = 0,p4 = 0;
     const char* Nom_fichier = "res_2pend.txt"; //Fichier de stockage des résultats
     
@@ -434,7 +434,7 @@ int main(){
       x1 = l1*2*q3_t/(1+q3_t*q3_t+q4_t*q4_t);
       y1 = l1*2*q4_t/(1+q3_t*q3_t+q4_t*q4_t);
       z1 = l1*(-1 + q3_t*q3_t + q4_t*q4_t)/(1 + q3_t*q3_t + q4_t*q4_t)+ l1 + l2 ;
-      f_cart << x1 << " " << y1 << " " << z1 << " " << x1+x2 << " " << y1+y2 << " " << z1+z2 << " " <<endl;
+      f_cart << t << " " << x1 << " " << y1 << " " << z1 << " " << x1+x2 << " " << y1+y2 << " " << z1+z2 <<endl;
       }
     f_stereo.close();
     f_cart.close();

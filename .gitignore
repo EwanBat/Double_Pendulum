@@ -1,8 +1,4 @@
 # Ignorer les images
-*.jpg
-*.jpeg
-*.png
-*.gif
 *.pdf
 
 # Ignorer les vidéos

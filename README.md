@@ -7,6 +7,8 @@
 
 This project simulates the motion of a **double pendulum** using **stereographic projection** to represent the configuration on a plane. The simulation uses **Hamiltonian mechanics** to model the dynamics and numerically integrates the equations of motion to visualize the chaotic behavior of the system.
 
+I must thank **Kristian Egeris** (zymplectic.com) for his work on the double pendulum and on the conversion of the Hamiltonian into stereographic coordinates.
+
 ---
 
 ## 📚 Sections Overview

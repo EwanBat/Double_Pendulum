@@ -40,7 +40,7 @@ l \cdot \ddot{\varphi} + 2l \cdot \dot{\theta} \cdot \dot{\varphi} \cdot \cos(\t
 
 This system can be solved numerically to obtain the 3D trajectory of the pendulum.
 
-<img src="image/trajectory_1pend.png" alt="Simple pendulum" width="300"/>
+<img src="image/trajectory_1pend.png" alt="Simple pendulum" width="600"/>
 
 ---
 
@@ -66,7 +66,7 @@ $l = g((m_1 + m_2)(1 - \frac{2}{b})l_2 + m_1(1 - \frac{2}{a})l_1) \tag{2.1}$
 - The first term represents **kinetic energy**
 - The added term is **potential energy**
 
-<img src="image/error_double_pendulum.png" alt="Simple pendulum" width="300"/>
+<img src="image/error_double_pendulum.png" alt="Simple pendulum" width="600"/>
 
 #### Definitions (from Appendix)
 

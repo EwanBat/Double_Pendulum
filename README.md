@@ -66,7 +66,7 @@ $l = g((m_1 + m_2)(1 - \frac{2}{b})l_2 + m_1(1 - \frac{2}{a})l_1) \tag{2.1}$
 - The first term represents **kinetic energy**
 - The added term is **potential energy**
 
-<img src="image/error_double_pendulum.png" alt="Simple pendulum" width="600"/>
+<img src="image/error_double_pendulum.png" alt="Double pendulum comparison" width="600"/>
 
 #### Definitions (from Appendix)
 

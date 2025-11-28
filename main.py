@@ -23,7 +23,7 @@ ax0.set_ylabel('dΘ (rad/s)')
 ax0.grid()
 
 ax1 = plt.subplot(gs[1])
-ax1.plot(Phi, dPhi, color='red')
+ax1.plot(Phi % 2*np.pi, dPhi, color='red')
 ax1.set_title('Phase Space: Φ vs dΦ')
 ax1.set_xlabel('Φ (rad)')
 ax1.set_ylabel('dΦ (rad/s)')

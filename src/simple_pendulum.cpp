@@ -7,28 +7,28 @@ void SimplePendulum::Ini_Mat(double*** Mat_Pond, double t){
   for (j=0;j<4;j++){ // Selon i, on fixe soit pj soit le terme dans le système qui permet de calculer pj
         for (i=0;i<2;i++){
             if (i==0 && j==0){
-                for (k=0;k<Nb_var;k++){
-		  Mat_Pond[0][j][k] = Coord[k]; // Définit le paramètre pour calculer p1
+                for (k=0;k<m_Nb_var;k++){
+		  Mat_Pond[0][j][k] = m_Coord[k]; // Définit le paramètre pour calculer p1
                 }
             }
             else if (i==0 && j>0 && j<3){
-                for (k=0;k<Nb_var;k++){
-                    Mat_Pond[0][j][k] = Coord[k] + dt*Mat_Pond[1][j-1][k]/2;  // Définit le paramètre pour calculer p2 et p3 dépendant de p1 et p2
+                for (k=0;k<m_Nb_var;k++){
+                    Mat_Pond[0][j][k] = m_Coord[k] + m_dt*Mat_Pond[1][j-1][k]/2;  // Définit le paramètre pour calculer p2 et p3 dépendant de p1 et p2
                 }
             }
             else if (i==0 && j==3){
-                for (k=0;k<Nb_var;k++){ // Définit le paramètre pour calculer p4 dépendant de p3
-                    Mat_Pond[0][j][k] = Coord[k] + dt*Mat_Pond[1][j-1][k];
+                for (k=0;k<m_Nb_var;k++){ // Définit le paramètre pour calculer p4 dépendant de p3
+                    Mat_Pond[0][j][k] = m_Coord[k] + m_dt*Mat_Pond[1][j-1][k];
                 }
             }
             else if (i==1 && j==0){
 	            pendule_3D(Mat_Pond[0][j],Mat_Pond[1][j],t); // Définit p1
             }
             else if (i==1 && j>0 && j<3){
-                pendule_3D(Mat_Pond[0][j],Mat_Pond[1][j],t+dt/2); // Définit p2 et p3
+                pendule_3D(Mat_Pond[0][j],Mat_Pond[1][j],t+m_dt/2); // Définit p2 et p3
             }
             else if (i==1 && j==3){
-	            pendule_3D(Mat_Pond[0][j],Mat_Pond[1][j],t+dt); // Définit p4
+	            pendule_3D(Mat_Pond[0][j],Mat_Pond[1][j],t+m_dt); // Définit p4
             }
         }// k porte sur les différentes variables du système
     }
@@ -43,7 +43,7 @@ void SimplePendulum::rk_4(const char* Nom_fichier)
     for (i=0;i<2;i++){
         Mat_Pond[i] = (double**)malloc(4*sizeof(double*));
         for (j=0;j<4;j++){
-            Mat_Pond[i][j] = (double*)malloc(Nb_var*sizeof(double));
+            Mat_Pond[i][j] = (double*)malloc(m_Nb_var*sizeof(double));
         }
     }
     Ini_Mat(Mat_Pond, t); // On initialise les pi pour t=0
@@ -51,16 +51,16 @@ void SimplePendulum::rk_4(const char* Nom_fichier)
     fstream fich;
     fich.open(Nom_fichier,ios::out);
     fich << t; // On affiche les conditions initiales dans un fichier texte pour l'afficher plus tard sous Python
-    for (k=0;k<Nb_var;k++){
-      fich <<' '<<Coord[k];
+    for (k=0;k<m_Nb_var;k++){
+      fich <<' '<<m_Coord[k];
     }
     fich <<endl;
-    while (t<=tf){ // Avancée temporelle
-        t += dt;
+    while (t<=m_tf){ // Avancée temporelle
+        t += m_dt;
 	fich <<t;
-        for (k=0;k<Nb_var;k++){ // Pour chaques coordonnées on avance par développement
-            Coord[k] = Coord[k] + dt*(Mat_Pond[1][0][k] + 2*Mat_Pond[1][1][k] + 2*Mat_Pond[1][2][k] + Mat_Pond[1][3][k])/6;
-	    fich << ' ' << Coord[k];
+        for (k=0;k<m_Nb_var;k++){ // Pour chaques coordonnées on avance par développement
+            m_Coord[k] = m_Coord[k] + m_dt*(Mat_Pond[1][0][k] + 2*Mat_Pond[1][1][k] + 2*Mat_Pond[1][2][k] + Mat_Pond[1][3][k])/6;
+	    fich << ' ' << m_Coord[k];
         }
         fich <<endl;
         Ini_Mat(Mat_Pond, t); // On fait évoluer les pi à t+dt pour la prochaine récurrence du système
@@ -77,10 +77,22 @@ void SimplePendulum::rk_4(const char* Nom_fichier)
 
 // Mise en équation
 
-void SimplePendulum::pendule_3D(double* Coord,double* dCoord,double t){ //Equation du pendule simple en 3D
-  double d2Teta,d2Phi;
-  double Teta = Coord[0],dTeta = Coord[1],/*Phi = Coord[2],*/dPhi = Coord[3];
-  d2Teta = (l*dPhi*dPhi*sin(Teta)*cos(Teta)-g*sin(Teta))/l;
-  d2Phi = -(2*dTeta*dPhi*cos(Teta))/(sin(Teta));
-  dCoord[0] = Coord[1]; dCoord[1] = d2Teta; dCoord[2] = Coord[3]; dCoord[3] = d2Phi;
+void SimplePendulum::pendule_3D(double* Coord, double* dCoord, double t){
+    double d2Teta, d2Phi;
+    double Teta = Coord[0], dTeta = Coord[1], dPhi = Coord[3];
+    
+    d2Teta = (m_l*dPhi*dPhi*sin(Teta)*cos(Teta) - m_g*sin(Teta))/m_l;
+    
+    // Protection contre division par zéro
+    double sin_theta = sin(Teta);
+    if (fabs(sin_theta) < 1e-10) {
+        d2Phi = 0.0;  // Forcer à zéro près des pôles
+    } else {
+        d2Phi = -(2*dTeta*dPhi*cos(Teta))/sin_theta;
+    }
+    
+    dCoord[0] = Coord[1]; 
+    dCoord[1] = d2Teta; 
+    dCoord[2] = Coord[3]; 
+    dCoord[3] = d2Phi;
 }

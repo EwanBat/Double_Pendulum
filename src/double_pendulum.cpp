@@ -410,33 +410,33 @@ void double_pendule_3D(double* Coord,double* dCoord,double t){
   }
 }
   
-int main(){
-    double* Coord;
-    double q1 = 0.7,q2 = 0,q3 = 1,q4 = 0.89;
-    double p1 = 0,p2 = 0,p3 = 0,p4 = 0;
-    const char* Nom_fichier = "res_2pend.txt"; //Fichier de stockage des résultats
+// int main(){
+//     double* Coord;
+//     double q1 = 0.7,q2 = 0,q3 = 1,q4 = 0.89;
+//     double p1 = 0,p2 = 0,p3 = 0,p4 = 0;
+//     const char* Nom_fichier = "res_2pend.txt"; //Fichier de stockage des résultats
     
-    Coord = (double*)malloc(Nb_var*sizeof(double));
-    Coord[0] = q1,Coord[1] = q2,Coord[2] = q3, Coord[3] = q4; // Coordonnées initiales
-    Coord[4] = p1,Coord[5] = p2,Coord[6] = p3,Coord[7] = p4;
-    rk_4(double_pendule_3D,Coord,tf,dt,Nb_var,Nom_fichier);
+//     Coord = (double*)malloc(Nb_var*sizeof(double));
+//     Coord[0] = q1,Coord[1] = q2,Coord[2] = q3, Coord[3] = q4; // Coordonnées initiales
+//     Coord[4] = p1,Coord[5] = p2,Coord[6] = p3,Coord[7] = p4;
+//     rk_4(double_pendule_3D,Coord,tf,dt,Nb_var,Nom_fichier);
 
-    fstream f_stereo,f_cart;
-    f_stereo.open(Nom_fichier,ios :: in); // On récupère les coordonnées stéréographiques
-    f_cart.open("cart_2pend.txt",ios :: out); // On va sortir les coordonnées cartésiennes
-    double t,q1_t,q2_t,q3_t,q4_t,p1_t,p2_t,p3_t,p4_t;
-    double x1,y1,z1,x2,y2,z2;
-    while (f_stereo >> t >> q1_t >> q2_t >> q3_t >> q4_t >> p1_t >> p2_t >> p3_t >> p4_t) { // On passe des coordonnées stéréographiques en cartésiennes
-      x2 = l2*2*q1_t/(1+q1_t*q1_t+q2_t*q2_t);
-      y2 = l2*2*q2_t/(1+q1_t*q1_t+q2_t*q2_t);
-      z2 = l2*(-1 + q1_t*q1_t + q2_t*q2_t)/(1 + q1_t*q1_t + q2_t*q2_t); // Formules données en annexe
+//     fstream f_stereo,f_cart;
+//     f_stereo.open(Nom_fichier,ios :: in); // On récupère les coordonnées stéréographiques
+//     f_cart.open("cart_2pend.txt",ios :: out); // On va sortir les coordonnées cartésiennes
+//     double t,q1_t,q2_t,q3_t,q4_t,p1_t,p2_t,p3_t,p4_t;
+//     double x1,y1,z1,x2,y2,z2;
+//     while (f_stereo >> t >> q1_t >> q2_t >> q3_t >> q4_t >> p1_t >> p2_t >> p3_t >> p4_t) { // On passe des coordonnées stéréographiques en cartésiennes
+//       x2 = l2*2*q1_t/(1+q1_t*q1_t+q2_t*q2_t);
+//       y2 = l2*2*q2_t/(1+q1_t*q1_t+q2_t*q2_t);
+//       z2 = l2*(-1 + q1_t*q1_t + q2_t*q2_t)/(1 + q1_t*q1_t + q2_t*q2_t); // Formules données en annexe
 
-      x1 = l1*2*q3_t/(1+q3_t*q3_t+q4_t*q4_t);
-      y1 = l1*2*q4_t/(1+q3_t*q3_t+q4_t*q4_t);
-      z1 = l1*(-1 + q3_t*q3_t + q4_t*q4_t)/(1 + q3_t*q3_t + q4_t*q4_t)+ l1 + l2 ;
-      f_cart << t << " " << x1 << " " << y1 << " " << z1 << " " << x1+x2 << " " << y1+y2 << " " << z1+z2 <<endl;
-      }
-    f_stereo.close();
-    f_cart.close();
-    return 0;
-}
+//       x1 = l1*2*q3_t/(1+q3_t*q3_t+q4_t*q4_t);
+//       y1 = l1*2*q4_t/(1+q3_t*q3_t+q4_t*q4_t);
+//       z1 = l1*(-1 + q3_t*q3_t + q4_t*q4_t)/(1 + q3_t*q3_t + q4_t*q4_t) + l1 + l2 ;
+//       f_cart << t << " " << x1 << " " << y1 << " " << z1 << " " << x1+x2 << " " << y1+y2 << " " << z1+z2 <<endl;
+//       }
+//     f_stereo.close();
+//     f_cart.close();
+//     return 0;
+// }

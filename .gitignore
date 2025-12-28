@@ -1,16 +1,2 @@
-# Ignorer les images
-*.pdf
-
-# Ignorer les vidéos
-*.mp4
-*.mov
-*.avi
-
-# Ignorer les fichiers texte ou données
-*.txt
-
-# Ignorer les outputs
-*.o
-
 # Ignorer les fichiers
-/.vscode
+/build

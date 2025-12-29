@@ -1,4 +1,6 @@
 #include "../include/double_pendulum.hpp"
+#include<iostream>
+#include<fstream>
 
 // Fonction Delta de Dirac
 int DoublePendulum::Delta(int i, int j){

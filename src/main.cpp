@@ -1,6 +1,8 @@
 #include "../include/simple_pendulum.hpp"
 #include "../include/double_pendulum.hpp"
 
+#include<iostream>
+
 int main(){
     //////////////////////////////// Simple Pendulum Simulation ////////////////////////////////
     // Définition des paramètres du pendule simple

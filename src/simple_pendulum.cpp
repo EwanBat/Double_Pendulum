@@ -1,4 +1,6 @@
 #include "../include/simple_pendulum.hpp"
+#include<iostream>
+#include<fstream>
 
 // Création de la fonction rk4
 

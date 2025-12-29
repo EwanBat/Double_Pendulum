@@ -68,6 +68,18 @@ $l = g((m_1 + m_2)(1 - \frac{2}{b})l_2 + m_1(1 - \frac{2}{a})l_1) \tag{2.1}$
 
 <img src="image/error_double_pendulum.png" alt="Double pendulum comparison" width="600"/>
 
+### 4. Using the Code
+
+cmake and compile the project:
+
+```
+mkdir build
+cd build
+cmake ..
+make
+./DoublePendulum
+```
+
 #### Definitions (from Appendix)
 
 

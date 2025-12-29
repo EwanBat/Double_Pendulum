@@ -1,3 +1,4 @@
 # Ignorer les fichiers
 /build
 /data/*.txt
+*.gif

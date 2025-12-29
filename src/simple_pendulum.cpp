@@ -80,21 +80,43 @@ void SimplePendulum::rk_4(const char* Nom_fichier)
 // Mise en équation
 
 void SimplePendulum::pendule_3D(double* Coord, double* dCoord, double t){
-    double d2Teta, d2Phi;
-    double Teta = Coord[0], dTeta = Coord[1], dPhi = Coord[3];
+    double d2Theta, d2Phi;
+    double Theta = Coord[0], dTheta = Coord[1], dPhi = Coord[3];
     
-    d2Teta = (m_l*dPhi*dPhi*sin(Teta)*cos(Teta) - m_g*sin(Teta))/m_l;
-    
-    // Protection contre division par zéro
-    double sin_theta = sin(Teta);
-    if (fabs(sin_theta) < 1e-10) {
-        d2Phi = 0.0;  // Forcer à zéro près des pôles
-    } else {
-        d2Phi = -(2*dTeta*dPhi*cos(Teta))/sin_theta;
-    }
+    d2Theta = (m_l*dPhi*dPhi*sin(Theta)*cos(Theta) - m_g*sin(Theta))/m_l;
     
     dCoord[0] = Coord[1]; 
-    dCoord[1] = d2Teta; 
-    dCoord[2] = Coord[3]; 
-    dCoord[3] = d2Phi;
+    dCoord[1] = d2Theta; 
+
+    // Protection contre division par zéro
+    double sin_theta = sin(Theta);
+    if (fabs(sin_theta) < 1e-3) {
+        d2Phi = 0.0;  // Forcer à zéro près des pôles
+        dCoord[2] = 0.0;
+        dCoord[3] = d2Phi;
+
+    } else {
+        d2Phi = -(2*dTheta*dPhi*cos(Theta))/sin_theta;
+        dCoord[2] = Coord[3]; 
+        dCoord[3] = d2Phi;
+    }
+}
+
+void SimplePendulum::multiple_rk_4(const char* Nom_fichier, int nb_simulations, double delta_dphi0) {
+    double original_dphi0 = m_dphi0; // Sauvegarder la valeur originale de dtheta0
+
+    for (int i = 0; i < nb_simulations; ++i) {
+        m_dphi0 = original_dphi0 + i * delta_dphi0; // Mettre à jour dtheta0
+        // Réinitialiser les coordonnées avec les nouvelles conditions initiales
+        m_Coord[0] = m_theta0;
+        m_Coord[1] = m_dtheta0;
+        m_Coord[2] = m_phi0;
+        m_Coord[3] = m_dphi0;
+
+        // Générer un nom de fichier unique pour chaque simulation
+        std::string file_name = std::string(Nom_fichier) + "_sim_" + std::to_string(i) + ".txt";
+        rk_4(file_name.c_str()); // Exécuter la simulation
+    }
+
+    m_dtheta0 = original_dphi0; // Restaurer la valeur originale de dtheta0
 }

@@ -33,8 +33,8 @@ Using spherical coordinates, the motion of a pendulum of mass $\( m \)$ and leng
 
 $$\
 \begin{cases}
-l \cdot \ddot{\theta} - l \cdot \dot{\varphi}^2 = -g \cdot \sin(\theta) \\
-l \cdot \ddot{\varphi} + 2l \cdot \dot{\theta} \cdot \dot{\varphi} \cdot \cos(\theta) = 0
+\cdot \ddot{\theta} = \sin(\theta) \cos(\theta) \cdot \dot{\varphi}^2 -\frac{g}{l} \cdot \sin(\theta) \\
+\cdot \ddot{\varphi} \sin(\theta) = - 2 \dot{\theta} \cdot \dot{\varphi} \cdot \cos(\theta)
 \end{cases}
 \$$
 

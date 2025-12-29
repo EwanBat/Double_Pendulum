@@ -15,7 +15,7 @@ int main(){
     SimplePendulum pendulum(length, mass, time_step, final_time);
 
     // Définition des conditions initiales
-    double theta0 = M_PI/4;   // Angle initial (45 degrés) (Ne doit pas être égal à 0 pour observer le mouvement)
+    double theta0 = M_PI / 4;   // Angle initial (45 degrés) (Ne doit pas être égal à 0 pour observer le mouvement)
     double dtheta0 = 0.0;       // Vitesse angulaire initiale
     double phi0 = 0.0;          // Angle azimutal initial
     double dphi0 = -0.1;         // Vitesse angulaire azimutale initiale
@@ -25,6 +25,12 @@ int main(){
     // Exécution de la simulation et enregistrement des résultats
     const char* output_file = "../data/simple_pendulum_output.txt";
     pendulum.rk_4(output_file);
+
+    // // Exécution de simulations multiples avec variation de dtheta0
+    const char* multi_output_file = "../data/simple_pendulum_output";;
+    int nb_simulations = 5; // Nombre de simulations à exécuter
+    double delta_dphi0 = 0.1; // Variation de dtheta0 entre chaque simulation
+    pendulum.multiple_rk_4(multi_output_file, nb_simulations, delta_dphi0);
 
     // Run plotting script
     std::string cmd = "python3 ../src/simple_pendulum_plot.py";

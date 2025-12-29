@@ -49,7 +49,7 @@ ax.set_zlabel('Z')
 plt.tight_layout()
 plt.savefig('../image/trajectory_1pend.png', dpi=300)
 
-########################### Data for multiple pendulums and plotting, animation ###########################
+########################## Data for multiple pendulums and plotting, animation ###########################
 # nb_simulations = 5  # Number of simulations
 # multi_output_file = '../data/simple_pendulum_output'
 # Coord_files = np.array([np.loadtxt(f'{multi_output_file}_sim_{i}.txt', delimiter=' ') for i in range(nb_simulations)])

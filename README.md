@@ -33,8 +33,8 @@ Using spherical coordinates, the motion of a pendulum of mass $\( m \)$ and leng
 
 $$\
 \begin{cases}
-\cdot \ddot{\theta} = \sin(\theta) \cos(\theta) \cdot \dot{\varphi}^2 -\frac{g}{l} \cdot \sin(\theta) \\
-\cdot \ddot{\varphi} \sin(\theta) = - 2 \dot{\theta} \cdot \dot{\varphi} \cdot \cos(\theta)
+\ddot{\theta} = \sin(\theta) \cos(\theta) \dot{\varphi}^2 -\frac{g}{l} \sin(\theta) \\
+\ddot{\varphi} \sin(\theta) = - 2 \dot{\theta} \dot{\varphi} \cos(\theta)
 \end{cases}
 \$$
 
@@ -66,7 +66,7 @@ $l = g((m_1 + m_2)(1 - \frac{2}{b})l_2 + m_1(1 - \frac{2}{a})l_1) \tag{2.1}$
 - The first term represents **kinetic energy**
 - The added term is **potential energy**
 
-<img src="image/error_double_pendulum.png" alt="Double pendulum comparison" width="600"/>
+<img src="image/error_2doublependulum.png" alt="Double pendulum comparison" width="600"/>
 
 ### 4. Using the Code
 

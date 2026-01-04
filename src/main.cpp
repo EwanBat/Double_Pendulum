@@ -26,12 +26,6 @@ void exe_simple_pendulum(){
     const char* output_file = "../data/simple_pendulum_output.txt";
     pendulum.rk_4(output_file);
 
-    // // Exécution de simulations multiples avec variation de dtheta0
-    const char* multi_output_file = "../data/simple_pendulum_output";;
-    int nb_simulations = 5; // Nombre de simulations à exécuter
-    double delta_dphi0 = 0.1; // Variation de dtheta0 entre chaque simulation
-    pendulum.multiple_rk_4(multi_output_file, nb_simulations, delta_dphi0);
-
     // Run plotting script
     std::string cmd = "python3 ../src/simple_pendulum_plot.py";
     int result = std::system(cmd.c_str());
@@ -68,6 +62,18 @@ void exe_double_pendulum(){
     // Exécution de la simulation et enregistrement des résultats
     const char* double_output_file = "../data/double_pendulum_output.txt";
     double_pendulum.rk_4(double_output_file);
+    
+    // Création d'un second double pendule avec une légère variation des conditions initiales
+    DoublePendulum double_pendulum_2(length1, length2, mass1, mass2, time_step, final_time);
+    double delta = 1e-6; // Petite variation pour observer le comportement chaotique
+    
+    double_pendulum_2.initial_conditions(q1 + delta, q2, q3, q4, p1, p2, p3, p4);
+    
+    // Exécution de la simulation et enregistrement des résultats
+    const char* double_output_file_2 = "../data/double_pendulum_output_2.txt";
+    double_pendulum_2.rk_4(double_output_file_2);
+    
+        
     // Run plotting script
     std::string double_cmd = "python3 ../src/double_pendulum_plot.py";
     int result = std::system(double_cmd.c_str());
@@ -78,6 +84,6 @@ void exe_double_pendulum(){
 
 int main(){
     exe_simple_pendulum();
-    // exe_double_pendulum();
+    exe_double_pendulum();
     return 0;
 }

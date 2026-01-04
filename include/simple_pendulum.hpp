@@ -36,8 +36,6 @@ public:
     
     void rk_4(const char* Nom_fichier);
 
-    void multiple_rk_4(const char* Nom_fichier, int nb_simulations, double delta_dtheta0);
-
 private:
     double m_l;      // Length of the pendulum
     double m_mass;      // Mass of the pendulum bob

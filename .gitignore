@@ -1,4 +1,4 @@
 # Ignorer les fichiers
-/build
+/build/
 /data/*.txt
 *.gif

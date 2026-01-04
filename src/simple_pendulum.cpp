@@ -101,22 +101,3 @@ void SimplePendulum::pendule_3D(double* Coord, double* dCoord, double t){
         dCoord[3] = d2Phi;
     }
 }
-
-void SimplePendulum::multiple_rk_4(const char* Nom_fichier, int nb_simulations, double delta_dphi0) {
-    double original_dphi0 = m_dphi0; // Sauvegarder la valeur originale de dtheta0
-
-    for (int i = 0; i < nb_simulations; ++i) {
-        m_dphi0 = original_dphi0 + i * delta_dphi0; // Mettre à jour dtheta0
-        // Réinitialiser les coordonnées avec les nouvelles conditions initiales
-        m_Coord[0] = m_theta0;
-        m_Coord[1] = m_dtheta0;
-        m_Coord[2] = m_phi0;
-        m_Coord[3] = m_dphi0;
-
-        // Générer un nom de fichier unique pour chaque simulation
-        std::string file_name = std::string(Nom_fichier) + "_sim_" + std::to_string(i) + ".txt";
-        rk_4(file_name.c_str()); // Exécuter la simulation
-    }
-
-    m_dtheta0 = original_dphi0; // Restaurer la valeur originale de dtheta0
-}
